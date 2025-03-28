@@ -1,0 +1,23 @@
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        string paragraph = "The gun was found near the scene. Suicide cases have increased.";
+        string[] badWords = { "gun", "suicide" };
+
+        string result = CensorBadWords(paragraph, badWords);
+        Console.WriteLine(result);
+    }
+
+    static string CensorBadWords(string text, string[] wordsToCensor)
+    {
+        foreach (var word in wordsToCensor)
+        {
+            string maskedWord = word[0] + new string('*', word.Length - 1);
+            text = text.Replace(word, maskedWord, StringComparison.OrdinalIgnoreCase);
+        }
+        return text;
+    }
+}
