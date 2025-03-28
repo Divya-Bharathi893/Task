@@ -1,0 +1,29 @@
+import java.util.Scanner;
+
+public class RiceBagProblem {
+    public static boolean canMakePackage(int small, int big, int goal) {
+        int maxBigBags = goal / 5;  
+        int usedBigBags = Math.min(big, maxBigBags);
+        int remainingWeight = goal - (usedBigBags * 5);
+
+        return remainingWeight <= small;
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter the number of small bags: ");
+        int small = scanner.nextInt();
+
+        System.out.print("Enter the number of big bags: ");
+        int big = scanner.nextInt();
+
+        System.out.print("Enter the goal weight: ");
+        int goal = scanner.nextInt();
+
+        boolean result = canMakePackage(small, big, goal);
+        System.out.println("Can we make the package? " + result);
+
+        scanner.close();
+    }
+}
